@@ -1,4 +1,4 @@
 Links below:
 https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners
 Using neural nets to recognize handwritten digits - http://neuralnetworksanddeeplearning.com/chap1.html
-Python Tutori - https://pythonprogramming.net/loading-images-python-opencv-tutorial/
+Python Tutorial - https://pythonprogramming.net/loading-images-python-opencv-tutorial/
