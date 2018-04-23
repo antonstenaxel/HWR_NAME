@@ -1,6 +1,13 @@
 Links below:
+
 https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners
+
 Using neural nets to recognize handwritten digits - http://neuralnetworksanddeeplearning.com/chap1.html
+
 Python Tutorial - https://pythonprogramming.net/loading-images-python-opencv-tutorial/
-Basic things about Computer Visionhttps://www.kdnuggets.com/2016/08/seven-steps-understanding-computer-vision.html
+
+Basic things about Computer Vision - https://www.kdnuggets.com/2016/08/seven-steps-understanding-computer-vision.html
+
+Adaptive Thresholding - https://dsp.stackexchange.com/questions/2411/what-are-the-most-common-algorithms-for-adaptive-thresholding
+
 
