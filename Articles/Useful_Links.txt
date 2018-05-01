@@ -10,4 +10,7 @@ Basic things about Computer Vision - https://www.kdnuggets.com/2016/08/seven-ste
 
 Adaptive Thresholding - https://dsp.stackexchange.com/questions/2411/what-are-the-most-common-algorithms-for-adaptive-thresholding
 
+OpenCV Adaptive T. Function - https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html
+
+
 
