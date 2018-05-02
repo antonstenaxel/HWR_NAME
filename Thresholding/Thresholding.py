@@ -46,9 +46,10 @@ def thresholding(image_name):
     selem = disk(2)                                         #A disk of 2 pixel as structuring element
     closed_niblack = closing(binary_niblack, selem)
     closed_sauvola = closing(binary_sauvola, selem)
-    selem = disk(1)
-    opened_niblack = opening(closed_sauvola, selem)
+    selem = disk(2)
+    opened_niblack = opening(closed_niblack, selem)
     opened_sauvola = opening(closed_sauvola, selem)
+
 
     showImage(closed_niblack, 'Niblack (Closing)')
     showImage(opened_niblack, 'Niblack (Opening)')
