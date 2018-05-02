@@ -10,6 +10,9 @@ from skimage.color import rgb2gray
 from skimage.filters import (threshold_otsu, threshold_niblack,
                              threshold_sauvola)
 
+from skimage.morphology import erosion, dilation, opening, closing, white_tophat
+from skimage.morphology import black_tophat, skeletonize, convex_hull_image
+from skimage.morphology import disk
 
 def thresholding(image_name):
 
@@ -17,8 +20,10 @@ def thresholding(image_name):
 
     # image = page()
     filename = os.path.join(image_name)
-    image = rgb2gray(io.imread(filename))
+    # image = io.imread(filename)
     # image = img_as_ubyte(image)
+    image = rgb2gray(io.imread(filename))
+
 
     binary_global = image > threshold_otsu(image)
 
@@ -29,31 +34,35 @@ def thresholding(image_name):
     binary_niblack = image > thresh_niblack
     binary_sauvola = image > thresh_sauvola
 
+
+
+    showImage(image, 'Original')
+    showImage(binary_global, 'Global Threshold (OTSU)')
+    # showImage(binary_niblack, 'Niblack Threshold')
+    # showImage(binary_sauvola, 'Sauvola Threshold')
+
+
+    #Applying morphological operation
+    selem = disk(2)                                         #A disk of 2 pixel as structuring element
+    closed_niblack = closing(binary_niblack, selem)
+    closed_sauvola = closing(binary_sauvola, selem)
+    selem = disk(1)
+    opened_niblack = opening(closed_sauvola, selem)
+    opened_sauvola = opening(closed_sauvola, selem)
+
+    showImage(closed_niblack, 'Niblack (Closing)')
+    showImage(opened_niblack, 'Niblack (Opening)')
+    showImage(closed_sauvola, 'Sauvola (Closing)')
+    showImage(opened_sauvola, 'Sauvola (Opening)')
+
+
+def showImage(image, title):
     # plt.figure(figsize=(10, 10))
     # plt.subplot(2, 2, 1)
     plt.imshow(image, cmap=plt.cm.gray)
-    plt.title('Original')
+    plt.title(title)
     plt.axis('off')
     plt.show()
-
-    # plt.subplot(2, 2, 2)
-    plt.title('Global Threshold (OTSU)')
-    plt.imshow(binary_global, cmap=plt.cm.gray)
-    plt.axis('off')
-    plt.show()
-
-    # plt.subplot(2, 2, 3)
-    plt.imshow(binary_niblack, cmap=plt.cm.gray)
-    plt.title('Niblack Threshold')
-    plt.axis('off')
-    plt.show()
-
-    # plt.subplot(2, 2, 4)
-    plt.imshow(binary_sauvola, cmap=plt.cm.gray)
-    plt.title('Sauvola Threshold')
-    plt.axis('off')
-    plt.show()
-
 
 def main():
 
