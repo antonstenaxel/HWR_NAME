@@ -8,13 +8,15 @@ import matplotlib.patches as mpatches
 import sys, os
 from os import listdir
 from os.path import isfile, join
-
+from skimage.color import rgb2gray
+from skimage.morphology import diamond,disk
+from skimage.morphology import erosion, dilation, opening, closing, white_tophat
 
 def segmentation(image_file):
 
     print(image_file)
-
-    im = ndimage.imread(image_file)
+    im = rgb2gray(io.imread(image_file))
+    # im = ndimage.imread(image_file)
     plots_to_show = []
 
     # # image_file = sys.argv[1]
@@ -59,6 +61,12 @@ def segmentation(image_file):
     plt.imshow(clean_border, cmap='gray')
     plt.show()
 
+    # Clouser Operation
+    selem = disk(2)                                         #A disk of 2 pixel as structuring element
+    clean_border = opening(clean_border, selem)
+
+
+
     #######################
     # Label image regions #
     #######################
@@ -78,10 +86,10 @@ def segmentation(image_file):
     cropped_images = []
 
     # define amount of padding to add to cropped image
-    pad = 20
+    pad = 0
 
     for region_index, region in enumerate(regionprops(labeled)):
-        if region.area < 2000:
+        if region.area < 60:
             continue
 
         # draw a rectangle around the segmented articles
@@ -116,7 +124,7 @@ def segmentation(image_file):
 
 def main():
 
-    mypath = 'images'
+    mypath = 'segmented'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for files in onlyfiles:
