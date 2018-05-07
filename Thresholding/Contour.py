@@ -23,7 +23,6 @@ import numpy as np
 
 import scipy
 from scipy import ndimage
-import matplotlib.pyplot as plt
 from skimage.measure import label
 
 
@@ -93,6 +92,27 @@ def getLargestCC(image_name):
 
     showImage(largestCC, "")
 
+def undesired_objects (image_name):
+
+    filename = os.path.join(image_name)
+    # image = io.imread(filename)
+    image = rgb2gray(io.imread(filename))
+    image = image.astype('uint8')
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats(image, connectivity=8)
+    sizes = stats[:, -1]
+
+    max_label = 1
+    max_size = sizes[1]
+    for i in range(2, nb_components):
+        if sizes[i] > max_size:
+            max_label = i
+            max_size = sizes[i]
+
+    img2 = np.zeros(output.shape)
+    img2[output == max_label] = 255
+    cv2.imshow("Biggest component", img2)
+    cv2.waitKey()
+
 def showImage(image, title):
     # plt.figure(figsize=(10, 10))
     # plt.subplot(2, 2, 1)
@@ -103,11 +123,11 @@ def showImage(image, title):
 
 def main():
 
-    mypath = 'images'
+    mypath = 'binarized'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for files in onlyfiles:
-        getLargestCC(mypath+'\\'+files)
+        undesired_objects(mypath+'\\'+files)
 
     # thresholding('sample1.jpg')
 
