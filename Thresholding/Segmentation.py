@@ -1,76 +1,143 @@
-import os
+from skimage import filters, segmentation, io
+from skimage.segmentation import clear_border
+from skimage.measure import label, regionprops
+from skimage.color import label2rgb
+from scipy import ndimage
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import sys, os
 from os import listdir
 from os.path import isfile, join
-from skimage import io
-import matplotlib.pyplot as plt
 from skimage.color import rgb2gray
-import numpy as np
-from skimage import data
-from skimage.feature import canny
-from scipy import ndimage as ndi
-from skimage import img_as_uint
-from skimage.filters import sobel
-from skimage.morphology import watershed
-from skimage.measure import label
-from skimage.measure import regionprops
+from skimage.morphology import diamond,disk
+from skimage.morphology import erosion, dilation, opening, closing, white_tophat
 
-def segment(image_file):
 
-    filename = os.path.join(image_file)
-    image = rgb2gray(io.imread(filename))
-    # image = io.imread(filename)
+def segmentation(image_file):
 
-    # histo = np.histogram(image, bins=np.arange(0, 256))
+    print(image_file)
+    # im = rgb2gray(io.imread(image_file))
+    im = ndimage.imread(image_file)
+    plots_to_show = []
 
-    # edges = canny(image/255.)
+    # # image_file = sys.argv[1]
+    # file_extension = image_file.split(".")[-1]
+    # plots_to_show = []
     #
-    # fill_coins = ndi.binary_fill_holes(edges)
+    # if file_extension in ["jpg", "jpeg"]:
+    #     im = ndimage.imread(image_file)
     #
-    # label_objects, nb_labels = ndi.label(fill_coins)
-    # sizes = np.bincount(label_objects.ravel())
-    # mask_sizes = sizes > 20
-    # mask_sizes[0] = 0
-    # coins_cleaned = mask_sizes[label_objects]
+    # elif file_extension in ["jp2"]:
+    #     im = io.imread(image_file, plugin='freeimage')
+    #
+    # else:
+    #     print "your input file isn't jpg or jp2"
+    #     sys.exit()
 
-    markers = np.zeros_like(image)
-    markers[image < 30] = 1
-    markers[image > 150] = 2
+    ############################
+    # X-Y axis pixel dilations #
+    ############################
 
-    elevation_map = sobel(image)
+    # plot the amount of white ink across the columns & rows
+    row_vals = list([sum(r) for r in im  ])
+    col_vals = list([sum(c) for c in im.T])
 
-    segmentation = watershed(elevation_map, markers)
+    if "col_sums" in plots_to_show:
+        plt.plot(col_vals)
+        plt.show()
 
-    # showImage(segmentation, "")
+    if "row_sums" in plots_to_show:
+        plt.plot(row_vals)
+        plt.show()
 
-    return segmentation
+    #########################################
+    # Otsu/Sauvola method of boolean classification #
+    #########################################
 
+    val = filters.threshold_otsu(im)
+    mask = im < val
 
-def showImage(image, title):
-    # plt.figure(figsize=(10, 10))
-    # plt.subplot(2, 2, 1)
-    plt.imshow(image, cmap=plt.cm.gray)
-    plt.title(title)
-    plt.axis('off')
+    # val = filters.threshold_sauvola(im, window_size=21)
+    # mask = im < val
+
+    clean_border = clear_border(mask)
+
+    plt.imshow(clean_border, cmap='gray')
     plt.show()
 
+    # Clouser Operation
+    selem = disk(2)                                         #A disk of 2 pixel as structuring element
+    clean_border = opening(clean_border, selem)
 
-def save_image(image, file_name):
 
-    out_dir = "segmented/"
+    #######################
+    # Label image regions #
+    #######################
+
+    labeled = label(clean_border)
+    image_label_overlay = label2rgb(labeled, image=im)
+
+    fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
+    ax.imshow(image_label_overlay)
+    #plt.show()
+
+    #########################################
+    # Draw bounding box around each article #
+    #########################################
+
+    # create array in which to store cropped articles
+    cropped_images = []
+
+    # define amount of padding to add to cropped image
+    pad = 0
+
+    for region_index, region in enumerate(regionprops(labeled)):
+        if region.area < 200:
+            continue
+
+        # draw a rectangle around the segmented articles
+        # bbox describes: min_row, min_col, max_row, max_col
+        minr, minc, maxr, maxc = region.bbox
+
+        # use those bounding box coordinates to crop the image
+        cropped_images.append(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
+
+        print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
+
+        rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
+                                  fill=False, edgecolor='red', linewidth=2)
+
+        ax.add_patch(rect)
+
+    plt.show()
+
+    return cropped_images
+
+
+def save_segmented_characters(cropped_images, file):
+
+    ###############
+    # Crop images #
+    ###############
+
+    out_dir = "segmented_articles/"+file+"/"
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
-    plt.imsave(out_dir + file_name + ".png", image, cmap=plt.cm.gray)
-    # io.imsave( out_dir + file_name + ".png", image)
+    # can crop using: cropped = image_array[x1:x2,y1:y2]
+
+    for c, cropped_image in enumerate(cropped_images):
+        io.imsave( out_dir + str(c) + ".jpg", cropped_image)
+
 
 def main():
 
-    mypath = 'images'
+    mypath = 'segmented'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-    for files in onlyfiles:
-        seg_image = segment(mypath+'\\'+files)
-        save_image(seg_image, files.split(".")[0])
+    for file in onlyfiles:
+        cropped_images = segmentation(mypath+'\\'+file)
+        save_segmented_characters(cropped_images, file.split(".")[0])
 
 
 if __name__== "__main__":

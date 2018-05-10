@@ -17,12 +17,11 @@ from skimage.morphology import disk
 def thresholding(image_name):
 
     # matplotlib.rcParams['font.size'] = 9
-
     # image = page()
     filename = os.path.join(image_name)
-    # image = io.imread(filename)
+    image = io.imread(filename)
     # image = img_as_ubyte(image)
-    image = rgb2gray(io.imread(filename))
+    # image = rgb2gray(io.imread(filename))
 
 
     binary_global = image > threshold_otsu(image)
