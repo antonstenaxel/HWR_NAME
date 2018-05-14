@@ -2,226 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128e9581-d00d-4da0-83f8-70d788a9fa55" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../Mat/bin_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/bin_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/bin_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/bin_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/otsu-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/otsu-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/sample.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/seg (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/seg (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/seg (3).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/seg (4).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mat/seg (5).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mat/test.asv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contour.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Binarization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thresholding.py" beforeDir="false" afterPath="$PROJECT_DIR$/Thresholding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P106-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P123-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P123-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P166-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P166-Fg007-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P168-Fg016-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P172-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P21-Fg006-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P22-Fg008-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P342-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P344-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P423-1-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P423-1-Fg002-R-C02-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P513-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P564-Fg003-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P583-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P583-Fg006-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P632-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P632-Fg002-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized/P846-Fg001-R-C01-R01-fused.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/P123-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/P344-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segment_periodicals.py" beforeDir="false" afterPath="$PROJECT_DIR$/Segmentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented/segmented_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/103.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/104.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/126.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/129.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/130.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/131.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/132.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/133.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/134.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/135.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/136.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/137.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/138.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/139.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/140.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/141.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/142.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/143.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/145.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/146.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/147.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/148.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/149.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/151.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/152.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/153.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/154.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/155.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/156.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/157.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/158.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/159.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/160.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/161.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/162.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/163.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/164.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/165.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/166.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/167.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/168.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/169.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/170.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/171.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/172.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/173.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/174.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/175.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/176.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/177.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/27.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/29.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/31.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/34.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/35.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/41.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/42.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/44.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/46.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/52.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/53.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/58.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/59.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/61.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/62.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/63.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/65.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/66.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/67.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/68.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/69.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/71.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/72.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/73.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/74.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/75.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/76.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/77.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/78.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/79.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/80.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/81.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/82.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/83.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/84.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/85.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/86.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/87.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/88.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/89.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/90.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/91.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/92.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/93.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/94.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/95.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/97.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/98.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/segmented_articles/99.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binarization.py" beforeDir="false" afterPath="$PROJECT_DIR$/Binarization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P106-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P123-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P166-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P166-Fg007-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P168-Fg016-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P172-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P21-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P22-Fg008-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P342-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P423-1-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P423-1-Fg002-R-C02-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P513-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P564-Fg003-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P583-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P583-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P632-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P632-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/New folder/P846-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmented/3_seg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmented/4_seg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/thresholded/MatLab_In.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -232,50 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Segmentation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Segmentation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1834">
-              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Binarization.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Binarization.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Binarization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MatLab_In.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/thresholded/MatLab_In.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Thresholding.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Thresholding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="3" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="206">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -306,9 +78,12 @@
         <option value="$PROJECT_DIR$/Contour.py" />
         <option value="$PROJECT_DIR$/segment_periodicals.py" />
         <option value="$PROJECT_DIR$/Thresholding.py" />
-        <option value="$PROJECT_DIR$/Binarization.py" />
         <option value="$PROJECT_DIR$/Segmentation.py" />
         <option value="$PROJECT_DIR$/thresholded/MatLab_In.py" />
+        <option value="$PROJECT_DIR$/test.m" />
+        <option value="$PROJECT_DIR$/MatLab_In.py" />
+        <option value="C:/Program Files/Python36/Lib/site-packages/matlab/engine/__init__.py" />
+        <option value="$PROJECT_DIR$/Binarization.py" />
       </list>
     </option>
   </component>
@@ -325,7 +100,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,15 +107,11 @@
               <item name="Thresholding" type="b2602c69:ProjectViewProjectNode" />
               <item name="Thresholding" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Thresholding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Thresholding" type="462c0819:PsiDirectoryNode" />
-              <item name="thresholded" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,7 +135,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MatLab_In">
+  <component name="RunManager" selected="Python.Binarization">
     <configuration name="Binarization" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -379,6 +149,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Binarization.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="MatLab_In (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MatLab_In.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -438,38 +226,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="segment_periodicals" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\SHAON\Google Drive\MS_LCT\Handwriting Recognition\LAB\HWR_NAME\Thresholding\Segmentation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
       <item itemvalue="Python.Segmentation" />
-      <item itemvalue="Python.segment_periodicals" />
       <item itemvalue="Python.Segmentation (1)" />
       <item itemvalue="Python.Binarization" />
       <item itemvalue="Python.MatLab_In" />
+      <item itemvalue="Python.MatLab_In (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Binarization" />
+        <item itemvalue="Python.MatLab_In (1)" />
         <item itemvalue="Python.MatLab_In" />
         <item itemvalue="Python.Segmentation (1)" />
-        <item itemvalue="Python.Binarization" />
         <item itemvalue="Python.Segmentation" />
-        <item itemvalue="Python.segment_periodicals" />
       </list>
     </recent_temporary>
   </component>
@@ -477,12 +247,12 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14641288" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14606741" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32478634" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32591414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3988604" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -504,23 +274,66 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Segmentation.py">
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/skimage/color/colorlabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/matplotlib/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="648" selection-start-line="648" selection-end-line="648" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contour.py" />
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
+    <entry file="file://$PROJECT_DIR$/Binarization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
     <entry file="file://$PROJECT_DIR$/Binarization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
           <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,26 +341,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,20 +359,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="114" column="33" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,13 +374,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" column="33" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
     <entry file="file://$PROJECT_DIR$/Binarization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -603,13 +389,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Segmentation.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -624,13 +404,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Contour.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1887">
-          <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Contour.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -638,13 +412,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Contour.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="23" lean-forward="true" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Contour.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -652,13 +420,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Contour.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Contour.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
@@ -680,13 +442,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.py" />
     <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -694,20 +450,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="17" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://$PROJECT_DIR$/Test.py" />
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/skimage/color/colorlabel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -722,34 +466,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Contour.py">
+    <entry file="file://$PROJECT_DIR$/Contour.py" />
+    <entry file="file://$PROJECT_DIR$/Test.py" />
+    <entry file="file://$PROJECT_DIR$/thresholded/MatLab_In.py" />
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="113" column="17" lean-forward="true" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="62" selection-start-column="62" selection-end-column="62" />
+        <state relative-caret-position="21">
+          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Segmentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1834">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1413" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Thresholding.py">
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/matlab/engine/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="3" selection-end-column="22" />
+        <state relative-caret-position="268">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MatLab_In.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -758,21 +507,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Binarization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thresholded/MatLab_In.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="206">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
         </state>
       </provider>
     </entry>

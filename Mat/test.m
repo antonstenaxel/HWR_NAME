@@ -1,4 +1,4 @@
-BW = imread('3.jpg');
+BW = imread('worst_bin.jpg');
 
 % Converting into logical image
 gray = rgb2gray(BW);
@@ -18,7 +18,7 @@ Inew = mask.*BW;
 figure
 imshow(Inew)
 
-imwrite(Inew,'3_seg.jpg')
+imwrite(Inew,'worst_seg.jpg')
 
 % IG = imread('3_gray.jpg');
 

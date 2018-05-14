@@ -50,7 +50,7 @@ def segment(image_file):
 
     segmentation = watershed(elevation_map, markers)
 
-    showImage(segmentation, "")
+    # showImage(segmentation, "")
 
     return segmentation
 

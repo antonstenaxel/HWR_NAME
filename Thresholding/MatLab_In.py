@@ -1,13 +1,14 @@
 import os
 from os import listdir
 from os.path import isfile, join
-from skimage import io
 import matlab.engine
+
 
 def call_matlab_script(file_name):
 
     eng = matlab.engine.start_matlab()
     eng.test(nargout=0)
+
 
 def main():
 
