@@ -4,30 +4,34 @@ BW = imread('worst_bin.jpg');
 gray = rgb2gray(BW);
 BW = gray>80;
 
-% figure
-% imshow(gray)
-
 % Taking the bigest connected component
 BW2 = bwareafilt(BW,1);
 
 % creating a mask from the binary image
 mask = imfill (BW2, 'holes');
 
-Inew = mask.*BW;
+figure
+imshow(mask)
+
+% Inew = mask.*BW;
+% imwrite(Inew,'best_seg.jpg')
+
+IG = imread('worst_orig.jpg');
+
+% gray = rgb2gray(IG);
+% IG = gray>100;
+
+mask = im2uint8(mask);
+% mask = double(mask);
+% IG = double(IG);
+
+figure
+imshow(IG)
+
+Inew = mask.*IG;
+% maskedRgbImage = bsxfun(@times, IG, cast(mask, 'like', IG));
 
 figure
 imshow(Inew)
 
 imwrite(Inew,'worst_seg.jpg')
-
-% IG = imread('3_gray.jpg');
-
-% gray = rgb2gray(IG);
-% IG = gray>100;
-
-% mask = im2uint8(mask);
-% mask = double(mask);
-% IG = double(IG);
-
-% Inew = mask.*repmat(IG,[1,1,255]);
-% maskedRgbImage = bsxfun(@times, IG, cast(mask, 'like', IG));
