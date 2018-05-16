@@ -9,5 +9,5 @@ else:
     image_path = "Test_Images/29.jpg"
 
 # Returns a 27 length array with probabilities correspongding to cf.dic
-# Accepts both images as file paths and numpy matrices
+# Accepts images as either file paths or numpy matrices
 cf.predict(img = image_path, print_result=True)
