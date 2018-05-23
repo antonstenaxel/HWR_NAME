@@ -2,9 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="128e9581-d00d-4da0-83f8-70d788a9fa55" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../Mat/read_write.m" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Mat/test.m" beforeDir="false" afterPath="$PROJECT_DIR$/../Mat/test.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P106-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P123-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P166-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P166-Fg007-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P168-Fg016-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P172-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P21-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P22-Fg008-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P342-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P423-1-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P423-1-Fg002-R-C02-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P513-Fg001-R-C01-R01-fused.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/binarized/P513-Fg001-R-C01-R01-fused.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P564-Fg003-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P583-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P583-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P632-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P632-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarized/P846-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P106-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P123-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P166-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P166-Fg007-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P168-Fg016-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P172-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P21-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P22-Fg008-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P342-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P423-1-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P423-1-Fg002-R-C02-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P513-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P564-Fg003-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P583-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P583-Fg006-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P632-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P632-Fg002-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/P846-Fg001-R-C01-R01-fused.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmented/3_seg (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmented/4_seg.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,29 +57,17 @@
       <file leaf-file-name="Binarization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Binarization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+            <state relative-caret-position="204">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Segmentation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Segmentation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Segmentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="127" selection-start-line="127" selection-end-line="127" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Thresholding.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Thresholding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="68" column="14" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="239">
+              <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -70,17 +97,17 @@
         <option value="$PROJECT_DIR$/images/Contour.py" />
         <option value="$PROJECT_DIR$/Contour.py" />
         <option value="$PROJECT_DIR$/segment_periodicals.py" />
+        <option value="$PROJECT_DIR$/Thresholding.py" />
         <option value="$PROJECT_DIR$/Segmentation.py" />
         <option value="$PROJECT_DIR$/thresholded/MatLab_In.py" />
         <option value="$PROJECT_DIR$/test.m" />
         <option value="$PROJECT_DIR$/MatLab_In.py" />
         <option value="C:/Program Files/Python36/Lib/site-packages/matlab/engine/__init__.py" />
         <option value="$PROJECT_DIR$/Binarization.py" />
-        <option value="$PROJECT_DIR$/Thresholding.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="870" />
     <option name="height" value="735" />
@@ -128,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Thresholding">
+  <component name="RunManager" selected="Python.Binarization">
     <configuration name="Binarization" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,7 +228,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Thresholding" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Segmentation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -213,26 +240,26 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Thresholding.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\SHAON\Google Drive\MS_LCT\Handwriting Recognition\LAB\HWR_NAME\Thresholding\Binarization.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
+      <item itemvalue="Python.Segmentation" />
       <item itemvalue="Python.Segmentation (1)" />
       <item itemvalue="Python.Binarization" />
       <item itemvalue="Python.MatLab_In" />
       <item itemvalue="Python.MatLab_In (1)" />
-      <item itemvalue="Python.Thresholding" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Thresholding" />
-        <item itemvalue="Python.Segmentation (1)" />
         <item itemvalue="Python.Binarization" />
+        <item itemvalue="Python.Segmentation (1)" />
         <item itemvalue="Python.MatLab_In (1)" />
         <item itemvalue="Python.MatLab_In" />
+        <item itemvalue="Python.Segmentation" />
       </list>
     </recent_temporary>
   </component>
@@ -240,12 +267,12 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14568081" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14606741" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3243243" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32478634" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3988604" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -462,30 +489,39 @@
     <entry file="file://$PROJECT_DIR$/Contour.py" />
     <entry file="file://$PROJECT_DIR$/Test.py" />
     <entry file="file://$PROJECT_DIR$/thresholded/MatLab_In.py" />
+    <entry file="file://$PROJECT_DIR$/Thresholding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.m" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/matlab/engine/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/MatLab_In.py" />
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/matlab/engine/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MatLab_In.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Binarization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+        <state relative-caret-position="204">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Segmentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="127" selection-start-line="127" selection-end-line="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Thresholding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="68" column="14" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="239">
+          <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
         </state>
       </provider>
     </entry>

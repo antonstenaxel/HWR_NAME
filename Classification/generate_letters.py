@@ -19,17 +19,11 @@ def binarize(img):
 def cut_out_image(img):
 
     binarized_image = binarize(img)
-    # You need to choose 4 or 8 for connectivity type
     connectivity = 8
-    # Perform the operation
     output = cv2.connectedComponentsWithStats(binarized_image, connectivity, cv2.CV_32S)
-    # centroid matrix
     centroids = output[3]
-    # The first cell is the number of labels
     num_labels = output[0]
-    # The second cell is the label matrix
     labels = output[1]
-    # The third cell is the stat matrix
     stats = output[2]
     # Biggest component
     biggest_component = np.argmax(stats[1:,cv2.CC_STAT_AREA])+1
