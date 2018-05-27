@@ -5,34 +5,39 @@ from skimage.color import label2rgb
 from scipy import ndimage
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import numpy as np
+from PIL import Image
 import sys, os
 from os import listdir
 from os.path import isfile, join
 from skimage.color import rgb2gray
 from skimage.morphology import diamond,disk
 from skimage.morphology import erosion, dilation, opening, closing, white_tophat
+import operator
+import scipy
+from scipy import ndimage as ndi
 
 
-def segmentation(image_file):
+def image_to_nparray(image):
+    print(type(image))
+    data = np.asarray( image, dtype="int32" )
+    return data
 
-    print(image_file)
+
+def nparray_to_image(npdata):
+    img = scipy.misc.toimage(npdata)
+    return img
+
+
+def segmentation(image):
+
+    # print(image_file)
     # im = rgb2gray(io.imread(image_file))
-    im = ndimage.imread(image_file)
-    plots_to_show = []
+    # im = ndimage.imread(image_file)
 
-    # # image_file = sys.argv[1]
-    # file_extension = image_file.split(".")[-1]
-    # plots_to_show = []
-    #
-    # if file_extension in ["jpg", "jpeg"]:
-    #     im = ndimage.imread(image_file)
-    #
-    # elif file_extension in ["jp2"]:
-    #     im = io.imread(image_file, plugin='freeimage')
-    #
-    # else:
-    #     print "your input file isn't jpg or jp2"
-    #     sys.exit()
+    im = np.array(image).astype(float)
+
+    plots_to_show = []
 
     ############################
     # X-Y axis pixel dilations #
@@ -62,10 +67,10 @@ def segmentation(image_file):
 
     clean_border = clear_border(mask)
 
-    plt.imshow(clean_border, cmap='gray')
-    plt.show()
+    # plt.imshow(clean_border, cmap='gray')
+    # plt.show()
 
-    # Clouser Operation
+    # Opening Operation
     selem = disk(2)                                         #A disk of 2 pixel as structuring element
     clean_border = opening(clean_border, selem)
 
@@ -91,18 +96,29 @@ def segmentation(image_file):
     # define amount of padding to add to cropped image
     pad = 0
 
+    # Sorting But failed...
+    region_bbox = []
+
     for region_index, region in enumerate(regionprops(labeled)):
         if region.area < 200:
             continue
 
-        # draw a rectangle around the segmented articles
-        # bbox describes: min_row, min_col, max_row, max_col
-        minr, minc, maxr, maxc = region.bbox
+        # reg_int = [int(i) for i in region.bbox]
+        region_bbox.append(region.bbox)
+
+    region_bbox = sorted(region_bbox, key = lambda x: (x[0], x[3]))
+    # region_bbox = sorted(region_bbox, key = lambda x: (x[3]))
+
+    for region in region_bbox:
+        print(region)
+
+        minr, minc, maxr, maxc = region
 
         # use those bounding box coordinates to crop the image
-        cropped_images.append(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
+        cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
+        cropped_images.append(cropped)
 
-        print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
+        # print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
 
         rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
                                   fill=False, edgecolor='red', linewidth=2)
@@ -110,6 +126,28 @@ def segmentation(image_file):
         ax.add_patch(rect)
 
     plt.show()
+
+
+    # for region_index, region in enumerate(regionprops(labeled)):
+    #     if region.area < 200:
+    #         continue
+    #
+    #     # draw a rectangle around the segmented articles
+    #     # bbox describes: min_row, min_col, max_row, max_col
+    #     minr, minc, maxr, maxc = region.bbox
+    #
+    #     # use those bounding box coordinates to crop the image
+    #     cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
+    #     cropped_images.append(cropped)
+    #
+    #     # print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
+    #
+    #     rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
+    #                               fill=False, edgecolor='red', linewidth=2)
+    #
+    #     ax.add_patch(rect)
+    #
+    # plt.show()
 
     return cropped_images
 
@@ -130,15 +168,15 @@ def save_segmented_characters(cropped_images, file):
         io.imsave( out_dir + str(c) + ".jpg", cropped_image)
 
 
-def main():
-
-    mypath = 'segmented'
-    onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-
-    for file in onlyfiles:
-        cropped_images = segmentation(mypath+'\\'+file)
-        save_segmented_characters(cropped_images, file.split(".")[0])
-
-
-if __name__== "__main__":
-  main()
+# def main():
+#
+#     mypath = 'segmented'
+#     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+#
+#     for file in onlyfiles:
+#         cropped_images = segmentation(mypath+'\\'+file)
+#         save_segmented_characters(cropped_images, file.split(".")[0])
+#
+#
+# if __name__== "__main__":
+#   main()

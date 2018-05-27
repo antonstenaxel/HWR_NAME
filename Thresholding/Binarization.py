@@ -1,4 +1,4 @@
-import os
+import os, random, cv2
 from os import listdir
 from os.path import isfile, join
 from skimage import io
@@ -16,11 +16,10 @@ from skimage.measure import regionprops
 from skimage.filters import threshold_otsu
 from skimage import exposure
 
-def segment(image_file):
+def binarize(image):
 
-    filename = os.path.join(image_file)
-    image = rgb2gray(io.imread(filename))
-    # image = io.imread(filename)
+    # filename = os.path.join(image_file)
+    # image = rgb2gray(io.imread(filename))
 
     # histo = np.histogram(image, bins=np.arange(0, 256))
 
@@ -42,26 +41,20 @@ def segment(image_file):
     # image = exposure.rescale_intensity(image, in_range=(v_min, v_max))
     # showImage(image, "")
 
+    # Produce a threshold to make the marker
     markers = np.zeros_like(image)
-    markers[image < 30] = 1
-    markers[image > 80] = 2
+    threshold = threshold_otsu(image)
+    markers[image < threshold] = 1
+    markers[image > threshold] = 2
+
+    # markers[image < 30] = 1
+    # markers[image > 80] = 2
 
     elevation_map = sobel(image)
-
     segmentation = watershed(elevation_map, markers)
 
-    # showImage(segmentation, "")
-
     return segmentation
-
-
-def showImage(image, title):
-    # plt.figure(figsize=(10, 10))
-    # plt.subplot(2, 2, 1)
-    plt.imshow(image, cmap=plt.cm.gray)
-    plt.title(title)
-    plt.axis('off')
-    plt.show()
+    # return segmentation.astype(np.uint8)
 
 
 def save_image(image, file_name):
@@ -73,15 +66,15 @@ def save_image(image, file_name):
     plt.imsave(out_dir + file_name + ".jpg", image, cmap=plt.cm.gray)
     # io.imsave( out_dir + file_name + ".pbm", image)
 
-def main():
 
-    mypath = 'images'
-    onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-
-    for file in onlyfiles:
-        seg_image = segment(mypath+'\\'+file)
-        save_image(seg_image, file.split(".")[0])
-
-
-if __name__== "__main__":
-  main()
+# def main():
+#
+#     mypath = 'images'
+#     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+#
+#     for file in onlyfiles:
+#         seg_image = binarize(mypath+'\\'+file)
+#         save_image(seg_image, file.split(".")[0])
+#
+# if __name__== "__main__":
+#   main()
