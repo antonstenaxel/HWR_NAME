@@ -16,6 +16,7 @@ from skimage.morphology import erosion, dilation, opening, closing, white_tophat
 import operator
 import scipy
 from scipy import ndimage as ndi
+import math
 
 
 def image_to_nparray(image):
@@ -103,16 +104,25 @@ def segmentation(image):
         if region.area < 200:
             continue
 
-        # reg_int = [int(i) for i in region.bbox]
-        region_bbox.append(region.bbox)
+        # For sorting purpose by row and column from right to left
+        minr, minc, maxr, maxc = region.bbox
+        # (x,y) are the centroid
+        x = math.ceil((minr+maxr)/2.0)
+        y = math.ceil((minc+maxc)/2.0)
+        # Number of rows
+        row_no = int(x/100)
 
-    region_bbox = sorted(region_bbox, key = lambda x: (x[0], x[3]))
+        region_bbox.append([row_no, x, y, minr, minc, maxr, maxc])
+        # region_bbox.append(region.bbox)
+
+    region_bbox = sorted(region_bbox, key = lambda x: (x[0], -x[2]))
+
     # region_bbox = sorted(region_bbox, key = lambda x: (x[3]))
 
     for region in region_bbox:
         print(region)
 
-        minr, minc, maxr, maxc = region
+        row_no, x, y, minr, minc, maxr, maxc = region
 
         # use those bounding box coordinates to crop the image
         cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
@@ -125,28 +135,6 @@ def segmentation(image):
 
         ax.add_patch(rect)
 
-    plt.show()
-
-
-    # for region_index, region in enumerate(regionprops(labeled)):
-    #     if region.area < 200:
-    #         continue
-    #
-    #     # draw a rectangle around the segmented articles
-    #     # bbox describes: min_row, min_col, max_row, max_col
-    #     minr, minc, maxr, maxc = region.bbox
-    #
-    #     # use those bounding box coordinates to crop the image
-    #     cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
-    #     cropped_images.append(cropped)
-    #
-    #     # print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
-    #
-    #     rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
-    #                               fill=False, edgecolor='red', linewidth=2)
-    #
-    #     ax.add_patch(rect)
-    #
     # plt.show()
 
     return cropped_images
