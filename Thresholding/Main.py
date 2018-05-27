@@ -22,10 +22,10 @@ def pre_processing(image_file, file):
     bin_image = Binarization.binarize(biggest_component)
     Binarization.save_image(bin_image, file.split(".")[0])              # Optional - Just to save the output
 
-    cropped_charters = Segmentation.segmentation(bin_image)
-    Segmentation.save_segmented_characters(cropped_charters, file)      # Optional - Just to save the output
+    cropped_characters = Segmentation.segmentation(bin_image)
+    Segmentation.save_segmented_characters(cropped_characters, file)      # Optional - Just to save the output
 
-    return cropped_charters
+    return cropped_characters
 
 def main():
 
@@ -37,7 +37,7 @@ def main():
 
         # Calling all the preprocessors from here
         # Here file is the name of the image file filename is the whole directory to that file
-        cropped_charters = pre_processing(file_name, file)
+        cropped_characters = pre_processing(file_name, file)
 
         # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
 
