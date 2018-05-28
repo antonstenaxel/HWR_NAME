@@ -81,10 +81,10 @@ def segmentation(image):
     #######################
 
     labeled = label(clean_border)
-    image_label_overlay = label2rgb(labeled, image=im)
+    # image_label_overlay = label2rgb(labeled, image=im)
 
     fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
-    ax.imshow(image_label_overlay)
+    ax.imshow(image, cmap=plt.cm.gray)
     #plt.show()
 
     #########################################
@@ -125,8 +125,8 @@ def segmentation(image):
         row_no, x, y, minr, minc, maxr, maxc = region
 
         # use those bounding box coordinates to crop the image
-        cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
-        cropped_images.append(cropped)
+        # cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
+        cropped_images.append(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
 
         # print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
 
@@ -153,7 +153,7 @@ def save_segmented_characters(cropped_images, file):
     # can crop using: cropped = image_array[x1:x2,y1:y2]
 
     for c, cropped_image in enumerate(cropped_images):
-        io.imsave( out_dir + str(c) + ".jpg", cropped_image)
+        io.imsave( out_dir + str(c) + ".jpg", nparray_to_image(cropped_image))
 
 
 # def main():

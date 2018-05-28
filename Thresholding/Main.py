@@ -7,7 +7,6 @@ from baseline_cnn_classifier import Classifier
 import sys
 
 
-
 def showImage(image, title):
     # plt.figure(figsize=(10, 10))
     # plt.subplot(2, 2, 1)
@@ -44,6 +43,8 @@ def main():
             #print(character)
 
         # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
+        # print(type(cropped_characters[0]))
+
         cf = Classifier(path_to_model = "baseline_cnn.h5")
 
         # if(len(sys.argv) > 1):
