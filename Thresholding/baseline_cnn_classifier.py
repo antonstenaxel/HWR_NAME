@@ -132,7 +132,7 @@ class Classifier:
             divider = make_axes_locatable(ax)
             cax = divider.append_axes("right", size="5%", pad=0.05)
             plt.colorbar(im, cax=cax)
-            plot = plt.show()
+            # plot = plt.show()
 
 
 
@@ -161,7 +161,7 @@ class Classifier:
 
         img_height,img_width = np.shape(img)
 
-        if(img_width/img_height > 0.8):
+        if(img_width/img_height > 1.2):
             p = self.multi_letter_predict(img,print_result)
         else:
             p = self.single_letter_predict(img, print_result)

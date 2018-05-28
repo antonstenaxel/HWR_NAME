@@ -49,8 +49,10 @@ def main():
 
         # if(len(sys.argv) > 1):
             # image_path = sys.argv[1]
-        for character in cropped_characters:
-            pred = cf.predict(img = character, print_result=True)
+        for x in range(len(cropped_characters)):
+            print(x)
+            cf.predict(img = cropped_characters[x], print_result=True)
+            showImage(cropped_characters[x], x)
             
 
 
