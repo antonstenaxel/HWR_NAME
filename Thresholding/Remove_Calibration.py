@@ -33,7 +33,7 @@ def cutout_img(image_file):
         y2 = top + height
 
         x,y = centroids[i]
-        print(stats[i,cv2.CC_STAT_AREA],img_area)
+        # print(stats[i,cv2.CC_STAT_AREA],img_area)
         if( x > x1 and x < x2 and y > y1 and y < y2 and (x1 != 0 or y1 != 0)):
             right_component = i
             break

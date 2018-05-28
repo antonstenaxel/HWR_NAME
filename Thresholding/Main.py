@@ -3,6 +3,8 @@ from os import listdir
 from os.path import isfile, join
 import matplotlib.pyplot as plt
 import Binarization, Remove_Calibration, Segmentation
+from baseline_cnn_classifier import Classifier
+import sys
 
 
 
@@ -33,13 +35,22 @@ def main():
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for file in onlyfiles:
-        file_name = mypath + '\\' + file
+        file_name = mypath + os.sep + file
 
         # Calling all the preprocessors from here
         # Here file is the name of the image file filename is the whole directory to that file
         cropped_characters = pre_processing(file_name, file)
+        #for character in cropped_characters:
+            #print(character)
 
         # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
+        cf = Classifier(path_to_model = "baseline_cnn.h5")
+
+        # if(len(sys.argv) > 1):
+            # image_path = sys.argv[1]
+        for character in cropped_characters:
+            pred = cf.predict(img = character, print_result=True)
+            
 
 
 

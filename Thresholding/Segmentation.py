@@ -20,7 +20,7 @@ import math
 
 
 def image_to_nparray(image):
-    print(type(image))
+    #print(type(image))
     data = np.asarray( image, dtype="int32" )
     return data
 
@@ -120,7 +120,7 @@ def segmentation(image):
     # region_bbox = sorted(region_bbox, key = lambda x: (x[3]))
 
     for region in region_bbox:
-        print(region)
+        #print(region)
 
         row_no, x, y, minr, minc, maxr, maxc = region
 

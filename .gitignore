@@ -1,0 +1,7 @@
+*/.ipynb_checkpoints/*
+*/.idea/*
+*/__pycache__/*
+*/binarized/*
+*/segmented_articles/*
+binarized
+segmented_articles
