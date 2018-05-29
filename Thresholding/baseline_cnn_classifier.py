@@ -161,7 +161,7 @@ class Classifier:
 
         img_height,img_width = np.shape(img)
 
-        if(img_width/img_height > 1.2):
+        if(img_width/img_height > 1.4):
             p = self.multi_letter_predict(img,print_result)
         else:
             p = self.single_letter_predict(img, print_result)

@@ -29,8 +29,10 @@ def pre_processing(image_file, file):
     return cropped_characters
 
 def main():
-
-    mypath = 'images'
+    if(len(sys.argv) > 1):
+        mypathpath = sys.argv[1]
+    else:
+        mypath = 'images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for file in onlyfiles:
