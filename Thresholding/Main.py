@@ -30,8 +30,10 @@ def pre_processing(image_file, file):
     return cropped_characters, row
 
 def main():
-
-    mypath = 'images'
+    if(len(sys.argv) > 1):
+        mypathpath = sys.argv[1]
+    else:
+        mypath = 'images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for file in onlyfiles:
@@ -51,10 +53,11 @@ def main():
 
         # if(len(sys.argv) > 1):
             # image_path = sys.argv[1]
-        for c, character in enumerate(cropped_characters):
-            showImage(character, c)
-            print(c)
-            pred = cf.predict(img = character, print_result=True)
+
+        for x in range(len(cropped_characters)):
+            print(x)
+            cf.predict(img = cropped_characters[x], print_result=True)
+            showImage(cropped_characters[x], x)
             
 
 

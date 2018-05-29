@@ -158,6 +158,8 @@ class Classifier:
 
         if(type(img) == str):
             img = self.read_image(img)
+        
+        print(img)
 
         img_height,img_width = np.shape(img)
 
