@@ -23,10 +23,11 @@ def pre_processing(image_file, file):
     bin_image = Binarization.binarize(biggest_component)
     Binarization.save_image(bin_image, file.split(".")[0])              # Optional - Just to save the output
 
-    cropped_characters = Segmentation.segmentation(bin_image)
+    # Returns a list of segmented characters and number of rows
+    cropped_characters, row = Segmentation.segmentation(bin_image)
     Segmentation.save_segmented_characters(cropped_characters, file)      # Optional - Just to save the output
 
-    return cropped_characters
+    return cropped_characters, row
 
 def main():
 
@@ -38,9 +39,10 @@ def main():
 
         # Calling all the preprocessors from here
         # Here file is the name of the image file filename is the whole directory to that file
-        cropped_characters = pre_processing(file_name, file)
+        cropped_characters, row = pre_processing(file_name, file)
         #for character in cropped_characters:
             #print(character)
+
 
         # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
         # print(type(cropped_characters[0]))
@@ -49,7 +51,9 @@ def main():
 
         # if(len(sys.argv) > 1):
             # image_path = sys.argv[1]
-        for character in cropped_characters:
+        for c, character in enumerate(cropped_characters):
+            showImage(character, c)
+            print(c)
             pred = cf.predict(img = character, print_result=True)
             
 

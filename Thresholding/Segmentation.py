@@ -100,6 +100,7 @@ def segmentation(image):
     # Sorting But failed...
     region_bbox = []
 
+
     for region_index, region in enumerate(regionprops(labeled)):
         if region.area < 200:
             continue
@@ -109,20 +110,23 @@ def segmentation(image):
         # (x,y) are the centroid
         x = math.ceil((minr+maxr)/2.0)
         y = math.ceil((minc+maxc)/2.0)
-        # Number of rows
+        # Number of rows can start from any number not necessarily 0
         row_no = int(x/100)
+
 
         region_bbox.append([row_no, x, y, minr, minc, maxr, maxc])
         # region_bbox.append(region.bbox)
 
     region_bbox = sorted(region_bbox, key = lambda x: (x[0], -x[2]))
 
-    # region_bbox = sorted(region_bbox, key = lambda x: (x[3]))
+    row = []
+    first_row = region_bbox[0][0]
 
     for region in region_bbox:
-        #print(region)
+        print(region)
 
         row_no, x, y, minr, minc, maxr, maxc = region
+        row.append(row_no - first_row)
 
         # use those bounding box coordinates to crop the image
         # cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
@@ -135,9 +139,9 @@ def segmentation(image):
 
         ax.add_patch(rect)
 
-    # plt.show()
+    plt.show()
 
-    return cropped_images
+    return cropped_images, row
 
 
 def save_segmented_characters(cropped_images, file):

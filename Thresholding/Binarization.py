@@ -15,6 +15,8 @@ from skimage.measure import label
 from skimage.measure import regionprops
 from skimage.filters import threshold_otsu
 from skimage import exposure
+import matplotlib.pyplot as plt
+
 
 def binarize(image):
 
@@ -44,7 +46,7 @@ def binarize(image):
     # Produce a threshold to make the marker
     markers = np.zeros_like(image)
     threshold = threshold_otsu(image)
-    markers[image < threshold] = 1
+    markers[image <= threshold] = 1
     markers[image > threshold] = 2
 
     # markers[image < 30] = 1
@@ -52,6 +54,9 @@ def binarize(image):
 
     elevation_map = sobel(image)
     segmentation = watershed(elevation_map, markers)
+
+    # plt.imshow(threshold, cmap=plt.cm.gray)
+    # plt.show()
 
     return segmentation
     # return segmentation.astype(np.uint8)
