@@ -123,7 +123,7 @@ def segmentation(image):
     first_row = region_bbox[0][0]
 
     for region in region_bbox:
-        print(region)
+        #print(region)
 
         row_no, x, y, minr, minc, maxr, maxc = region
         row.append(row_no - first_row)
@@ -139,12 +139,12 @@ def segmentation(image):
 
         ax.add_patch(rect)
 
-    plt.show()
+    #plt.show()
 
     return cropped_images, row
 
 
-def save_segmented_characters(cropped_images, file):
+def save_segmented_characters(cropped_images, row, file):
 
     ###############
     # Crop images #
@@ -155,9 +155,11 @@ def save_segmented_characters(cropped_images, file):
         os.makedirs(out_dir)
 
     # can crop using: cropped = image_array[x1:x2,y1:y2]
-
-    for c, cropped_image in enumerate(cropped_images):
-        io.imsave( out_dir + str(c) + ".jpg", nparray_to_image(cropped_image))
+    #[str(x[0]) + x[1] for x in zip(list1, list2)]
+    for c, (im, r) in enumerate(zip(cropped_images, row)):
+    #for c, cropped_image in enumerate(cropped_images):
+        #io.imsave( out_dir + str(c) + ".jpg", nparray_to_image(cropped_image))
+        io.imsave( out_dir + str(c) + '-' + str(r) + ".jpg", nparray_to_image(im))
 
 
 # def main():

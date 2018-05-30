@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import Binarization, Remove_Calibration, Segmentation
 from baseline_cnn_classifier import Classifier
 import sys
+import json
 
 
 def showImage(image, title):
@@ -25,7 +26,7 @@ def pre_processing(image_file, file):
 
     # Returns a list of segmented characters and number of rows
     cropped_characters, row = Segmentation.segmentation(bin_image)
-    Segmentation.save_segmented_characters(cropped_characters, file)      # Optional - Just to save the output
+    Segmentation.save_segmented_characters(cropped_characters, row, file)      # Optional - Just to save the output
 
     return cropped_characters, row
 
@@ -53,12 +54,20 @@ def main():
 
         # if(len(sys.argv) > 1):
             # image_path = sys.argv[1]
-
-        for x in range(len(cropped_characters)):
-            print(x)
-            cf.predict(img = cropped_characters[x], print_result=True)
-            showImage(cropped_characters[x], x)
-            
+        predictions = []
+        for c, (char, r) in enumerate(zip(cropped_characters, row)):
+            try:
+                pred = cf.predict(img = char, print_result=False)[1]
+                predictions.append((c, r, pred))
+            except:
+                continue
+            #showImage(cropped_characters[x], x)
+        print(predictions, '\n\n\n')
+        out_dir = "transcripts/"
+        if not os.path.exists(out_dir):
+            os.makedirs(out_dir)
+        with open(out_dir + file + '.txt', 'w', encoding='utf-8') as out:
+            out.write('predictions')
 
 
 
