@@ -38,16 +38,15 @@ def cutout_img(image_file):
             right_component = i
             break
 
-    img_copy[labels != right_component] = 0
+    # img_copy[labels != right_component] = 0
     # Bounding box of biggest component
     left,top,width,height = stats[right_component,0:4]
 
 
-    # plt.imshow(img_copy, cmap=plt.cm.gray)
-    # plt.show()
-
     new_img = img_copy[top:top+height,left:left+width]
 
+    # plt.imshow(new_img, cmap=plt.cm.gray)
+    # plt.show()
 
     return new_img
 

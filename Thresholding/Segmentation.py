@@ -85,7 +85,7 @@ def segmentation(image):
 
     fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
     ax.imshow(image, cmap=plt.cm.gray)
-    #plt.show()
+    # plt.show()
 
     #########################################
     # Draw bounding box around each article #
@@ -139,7 +139,7 @@ def segmentation(image):
 
         ax.add_patch(rect)
 
-    #plt.show()
+    plt.show()
 
     return cropped_images, row
 
