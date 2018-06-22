@@ -139,7 +139,7 @@ def segmentation(image):
 
         ax.add_patch(rect)
 
-    plt.show()
+    # plt.show()
 
     return cropped_images, row
 

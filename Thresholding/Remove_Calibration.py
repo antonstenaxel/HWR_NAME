@@ -45,8 +45,17 @@ def cutout_img(image_file):
 
     new_img = img_copy[top:top+height,left:left+width]
 
-    # plt.imshow(new_img, cmap=plt.cm.gray)
-    # plt.show()
+    plt.imshow(new_img, cmap=plt.cm.gray)
+    plt.show()
 
     return new_img
 
+
+def save_image(image, file_name):
+
+    out_dir = "biggest/"
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+
+    plt.imsave(out_dir + file_name + ".jpg", image, cmap=plt.cm.gray)
+    # io.imsave( out_dir + file_name + ".pbm", image)

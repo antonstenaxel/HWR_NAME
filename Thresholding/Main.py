@@ -20,6 +20,7 @@ def showImage(image, title):
 def pre_processing(image_file, file):
 
     biggest_component = Remove_Calibration.cutout_img(image_file)
+    Remove_Calibration.save_image(biggest_component, file.split(".")[0])
 
     bin_image = Binarization.binarize(biggest_component)
     Binarization.save_image(bin_image, file.split(".")[0])              # Optional - Just to save the output
