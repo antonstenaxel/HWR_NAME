@@ -42,9 +42,13 @@ class Classifier:
         self.model = load_model(path_to_model)
 
 
-    def read_image(self,path):
-        img = cv2.imread(path,0)
-        preprocessed_image = utility_functions.preprocess_image(img)
+    def preprocess_image(self,img,multi_letter):
+
+        if(multi_letter == False):
+            preprocessed_image = utility_functions.preprocess_single_letter(img)
+        else:
+            preprocessed_image = utility_functions.preprocess_multi_letter(img)
+
         thinned_image = utility_functions.zhangSuen(preprocessed_image)
 
         #Data obtained from training model, only for thinned and augmented images
@@ -56,42 +60,43 @@ class Classifier:
         return final_image
 
     def multi_letter_predict(self,img,print_result = True, stride = 1):
-        img = self.reshape_image(img,28,True)
+
         img_height, img_width = np.shape(img)
 
-        p = np.zeros([len(self.dic),img_width//stride])
-        x = 0
+        p = np.zeros([len(self.dic),(img_width-28)//stride])
+        x = img_width
         i = 0
-        while(x < img_width):
-            window = img[0:img_height,x:x+img_height]
-            p_i = self.single_letter_predict(window,False)
+        while(x > 28):
+
+            window = img[:,x-28:x]
+            p_i = self.single_letter_predict(window.reshape(1,28,28,1),False)
             p[:,i] = p_i
 
-            x += stride
+            x -= stride
             i += 1
 
         if(print_result):
             dim = np.shape(p)
-
             fig, ax = plt.subplots()
             im = ax.imshow(p,cmap="Blues")
 
             # We want to show all ticks...
-            ax.set_xticks(np.arange(dim[1]))
+            ax.set_xticks(np.arange(i))
             ax.set_yticks(np.arange(dim[0]))
             # ... and label them with the respective list entries
             ax.set_yticklabels([letter for letter in self.dic.values()])
-            ax.set_xticklabels(range(dim[1]))
+            ax.set_xticklabels(range(i))
 
             # Rotate the tick labels and set their alignment.
             plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
-
-            ax.set_title("Probability Map")
+            plt.grid(alpha = 0.2)
+            ax.set_title("Probability Map (from right to left)")
             fig.tight_layout()
             plt.xlabel("Window-step")
             divider = make_axes_locatable(ax)
             cax = divider.append_axes("right", size="5%", pad=0.05)
             plt.colorbar(im, cax=cax)
+
             plot = plt.show()
 
 
@@ -113,11 +118,14 @@ class Classifier:
     def predict(self,img, print_result = True):
 
         if(type(img) == str):
-            img = self.read_image(img)
+            img = cv2.imread(img,0)
 
-        img_height,img_width = np.shape(img)
-        p = self.single_letter_predict(img.reshape([1,28,28,1]), print_result)
+        preprocessed_image = self.preprocess_image(img.copy(),multi_letter = False)
 
+        p = self.single_letter_predict(preprocessed_image.reshape([1,28,28,1]), print_result = False)
 
+        if(p[0,27] > 0.8):
+            preprocessed_multi_letter = self.preprocess_image(img.copy(), multi_letter = True)
+            p = self.multi_letter_predict(preprocessed_multi_letter)
 
         return p
