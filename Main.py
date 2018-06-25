@@ -9,6 +9,36 @@ from Segmentation import Binarization, Remove_Calibration, Segmentation
 from Classification.improved_classifier import Classifier
 import json
 import numpy as np
+dic = {0: 'Alef',
+1: 'Ayin',
+2: 'Bet',
+3: 'Dalet',
+4: 'Gimel',
+5: 'He',
+6: 'Het',
+7: 'Kaf',
+8: 'Kaf-final',
+9: 'Lamed',
+10: 'Mem',
+11: 'Mem-medial',
+12: 'Nun-final',
+13: 'Nun-medial',
+14: 'Pe',
+15: 'Pe-final',
+16: 'Qof',
+17: 'Resh',
+18: 'Samekh',
+19: 'Shin',
+20: 'Taw',
+21: 'Tet',
+22: 'Tsadi-final',
+23: 'Tsadi-medial',
+24: 'Waw',
+25: 'Yod',
+26: 'Zayin',
+27: 'Multi-letter',
+28: 'Noise'}
+
 
 def showImage(image, title):
     # plt.figure(figsize=(10, 10))
@@ -69,8 +99,12 @@ def main():
 
             char = 255*(char-1)
             pred = cf.predict(img = char, print_result=True)
-            
-            print(c, r, pred)
+
+            letter = 'Multi-letter/A'
+            if(np.shape(pred)[0] == 1):
+                letter = dic[np.argmax(pred)]
+
+            print(c, r, letter)
             predictions.append((c, r, pred))
             #except:
             #    continue
