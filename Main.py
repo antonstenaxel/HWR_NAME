@@ -8,7 +8,7 @@ from Segmentation import Binarization, Remove_Calibration, Segmentation
 #from Classification.improved_classifier import Classifier
 from Classification.improved_classifier import Classifier
 import json
-
+import numpy as np
 
 def showImage(image, title):
     # plt.figure(figsize=(10, 10))
@@ -16,7 +16,7 @@ def showImage(image, title):
     plt.imshow(image, cmap=plt.cm.gray)
     plt.title(title)
     plt.axis('off')
-    #plt.show()
+    plt.show()
 
 
 def pre_processing(image_file, file):
@@ -61,12 +61,15 @@ def main():
             # image_path = sys.argv[1]
         predictions = []
         for c, (char, r) in enumerate(zip(cropped_characters[:5], row[:5])):
+            #plt.imshow(char,cmap="gray")
+            #plt.show()
             #print(char)
             #try:
-            #showImage(char,"hej")
 
+
+            char = 255*(char-1)
             pred = cf.predict(img = char, print_result=True)
-
+            
             print(c, r, pred)
             predictions.append((c, r, pred))
             #except:
