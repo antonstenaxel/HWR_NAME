@@ -97,7 +97,7 @@ class Classifier:
             cax = divider.append_axes("right", size="5%", pad=0.05)
             plt.colorbar(im, cax=cax)
 
-            plot = plt.show()
+            #plot = plt.show()
 
 
         return p

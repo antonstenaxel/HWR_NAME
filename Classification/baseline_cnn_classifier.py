@@ -132,7 +132,7 @@ class Classifier:
             divider = make_axes_locatable(ax)
             cax = divider.append_axes("right", size="5%", pad=0.05)
             plt.colorbar(im, cax=cax)
-            plot = plt.show()
+            # plot = plt.show()
 
 
 
@@ -144,13 +144,13 @@ class Classifier:
         img = self.reshape_image(img,28, False)
         preprocessed_image = self.preprocess_image(img)
         p = self.model.predict_proba(preprocessed_image)
-
+        res_dic = {self.dic[cl]: round(p_i, 4) for cl, p_i in zip(range(len(p[0])), p[0])}
         if(print_result):
             cl = 0;
             for p_i in p[0]:
                 print(" {:.4f} \t{} ".format(p_i,self.dic[cl]))
                 cl += 1
-        return p
+        return p, res_dic
 
     # Returns soft max array for single letter predictions and a
     # matrix of windows for a sliding window if multi letter.
@@ -158,12 +158,10 @@ class Classifier:
 
         if(type(img) == str):
             img = self.read_image(img)
-        
-        print(img)
 
         img_height,img_width = np.shape(img)
 
-        if(img_width/img_height > 0.8):
+        if(img_width/img_height > 2.4):
             p = self.multi_letter_predict(img,print_result)
         else:
             p = self.single_letter_predict(img, print_result)
