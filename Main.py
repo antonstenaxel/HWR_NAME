@@ -6,7 +6,7 @@ from os.path import isfile, join
 import matplotlib.pyplot as plt
 from Segmentation import Binarization, Remove_Calibration, Segmentation
 #from Classification.improved_classifier import Classifier
-from Classification.baseline_cnn_classifier import Classifier
+from Classification.improved_classifier import Classifier
 import json
 
 
@@ -34,6 +34,9 @@ def pre_processing(image_file, file):
     return cropped_characters, row
 
 def main():
+    #cf = Classifier(path_to_model = "Classification/Models/baseline_cnn.h5")
+    cf = Classifier(path_to_model = "Classification/Models/thinned_and_augmented_cnn_v2.h5")
+
     if(len(sys.argv) > 1):
         mypathpath = sys.argv[1]
     else:
@@ -46,6 +49,7 @@ def main():
         # Calling all the preprocessors from here
         # Here file is the name of the image file filename is the whole directory to that file
         cropped_characters, row = pre_processing(file_name, file)
+
         #for character in cropped_characters:
             #print(character)
 
@@ -53,16 +57,16 @@ def main():
         # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
         # print(type(cropped_characters[0]))
 
-        cf = Classifier(path_to_model = "Classification/Models/baseline_cnn.h5")
-        #cf = Classifier(path_to_model = "Classification/Models/thinned_and_augmented_cnn_v2.h5")
-
         # if(len(sys.argv) > 1):
             # image_path = sys.argv[1]
         predictions = []
         for c, (char, r) in enumerate(zip(cropped_characters[:5], row[:5])):
             #print(char)
             #try:
-            pred = cf.predict(img = char, print_result=False)
+            #showImage(char,"hej")
+
+            pred = cf.predict(img = char, print_result=True)
+
             print(c, r, pred)
             predictions.append((c, r, pred))
             #except:

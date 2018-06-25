@@ -126,6 +126,11 @@ class Classifier:
 
         if(p[0,27] > 0.8):
             preprocessed_multi_letter = self.preprocess_image(img.copy(), multi_letter = True)
-            p = self.multi_letter_predict(preprocessed_multi_letter)
+            s = np.shape(preprocessed_multi_letter)
+            if(s[1] < 28):
+                p = np.zeros([1,29])
+                p[0,28] = 1
+            else:
+               p = self.multi_letter_predict(preprocessed_multi_letter)
 
         return p
