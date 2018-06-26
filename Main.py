@@ -5,11 +5,11 @@ from os import listdir
 from os.path import isfile, join
 import matplotlib.pyplot as plt
 from Segmentation import Binarization, Remove_Calibration, Segmentation
-#from Classification.improved_classifier import Classifier
 from Classification.improved_classifier import Classifier
 import json
 import numpy as np
-dic = {0: 'Alef',
+
+class2label = {0: 'Alef',
 1: 'Ayin',
 2: 'Bet',
 3: 'Dalet',
@@ -39,6 +39,37 @@ dic = {0: 'Alef',
 27: 'Multi-letter',
 28: 'Noise'}
 
+label2char = {'Alef':'א',
+'Ayin':'ע',
+'Bet':'ב',
+'Dalet':'ד',
+'Gimel':'ג',
+'He':'ה',
+'Het':'ח',
+'Kaf':'כ',
+'Kaf-final':'ך',
+'Lamed':'ל',
+'Mem':'ם',
+'Mem-medial':'מ',
+'Nun-final':'ן',
+'Nun-medial':'נ',
+'Pe':'פ',
+'Pe-final':'ף',
+'Qof':'ק',
+'Resh':'ר',
+'Samekh':'ס',
+'Shin':'ש',
+'Taw':'ת',
+'Tet':'ט',
+'Tsadi-final':'צ',
+'Tsadi-medial':'צ',
+'Waw':'ו',
+'Yod':'י',
+'Zayin':'ז',
+'Multi-letter': '!',
+'Noise': ''
+}
+
 
 def showImage(image, title):
     # plt.figure(figsize=(10, 10))
@@ -55,11 +86,11 @@ def pre_processing(image_file, file):
     #Remove_Calibration.save_image(biggest_component, file.split(".")[0])
 
     bin_image = Binarization.binarize(biggest_component)
-    #Binarization.save_image(bin_image, file.split(".")[0])              # Optional - Just to save the output
+    #Binarization.save_image(bin_image, file.split(".")[0])             
 
     # Returns a list of segmented characters and number of rows
     cropped_characters, row = Segmentation.segmentation(bin_image)
-    Segmentation.save_segmented_characters(cropped_characters, row, file)      # Optional - Just to save the output
+    #Segmentation.save_segmented_characters(cropped_characters, row, file)    
 
     return cropped_characters, row
 
@@ -70,52 +101,41 @@ def main():
     if(len(sys.argv) > 1):
         mypathpath = sys.argv[1]
     else:
-        mypath = 'images'
+        mypath = 'images/all_images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for file in onlyfiles:
+        print(file)
         file_name = mypath + os.sep + file
 
-        # Calling all the preprocessors from here
-        # Here file is the name of the image file filename is the whole directory to that file
         cropped_characters, row = pre_processing(file_name, file)
 
-        #for character in cropped_characters:
-            #print(character)
-
-
-        # Call to Classifier Using the cropped_characters (a list of segmented characters per image)
-        # print(type(cropped_characters[0]))
-
-        # if(len(sys.argv) > 1):
-            # image_path = sys.argv[1]
         predictions = []
-        for c, (char, r) in enumerate(zip(cropped_characters[:5], row[:5])):
-            #plt.imshow(char,cmap="gray")
-            #plt.show()
-            #print(char)
-            #try:
-
-
+        for c, (char, r) in enumerate(zip(cropped_characters, row)):
             char = 255*(char-1)
             pred = cf.predict(img = char, print_result=True)
 
-            letter = 'Multi-letter/A'
+            #letter = 'Multi-letter/A'
+            letter ='?'
             if(np.shape(pred)[0] == 1):
-                letter = dic[np.argmax(pred)]
-
-            print(c, r, letter)
-            predictions.append((c, r, pred))
-            #except:
-            #    continue
-            #showImage(cropped_characters[x], x)
-        #print(predictions, '\n\n\n')
+                letter = label2char[class2label[np.argmax(pred)]]
+            #print(c, r, letter)
+            predictions.append((c, r, letter))
+            
         out_dir = "transcripts/"
         if not os.path.exists(out_dir):
             os.makedirs(out_dir)
         with open(out_dir + file + '.txt', 'w', encoding='utf-8') as out:
-            out.write('predictions')
-
+            row = 0
+            line = []
+            for p in predictions:
+                c, r, letter = p
+                if r != row:
+                    print(line)
+                    out.write(''.join(line) + '\n')
+                    row = r
+                    line = []
+                line.append(letter)
 
 
 if __name__== "__main__":
