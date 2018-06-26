@@ -4,37 +4,35 @@ import cv2
 import skimage.io as io
 from skimage.filters import threshold_otsu
 
-def pad_image(image, padding, value):
+def add_border(image, padding, value):
     height, width = np.shape(image)
-    
+
     new_image = value*np.ones([height+2*padding, width+2*padding])
-    
+
     new_image[padding:padding+height, padding:padding+width] = image.copy()
-    
+
     return new_image.astype(np.uint8)
 
-def preprocess_image(img):
-
-    img = pad_image(img,3,255)
-
-    #Binarize image
+def binarize_image(img):
     binarized_image = img.copy()
     threshold = 127
     binarized_image[img<=threshold] = 1
     binarized_image[img>threshold] = 0
-    
-    #Filter out biggest component
+
+    return binarized_image
+
+def extract_biggect_component(binarized_image):
     output = cv2.connectedComponentsWithStats(binarized_image, 4, cv2.CV_32S)
     labels = output[1]
     stats = output[2]
-    
+
     biggest_components =  np.argsort(-stats[:,4])
-    
-    #if(stats[biggest_components[0],0] == 0 and stats[biggest_components[0],1] == 0 ):
-    biggest_component = biggest_components[1]
-    #else:
-        #biggest_component = biggest_components[0]
-    
+
+    if(stats[biggest_components[0],0] == 0 and stats[biggest_components[0],1] == 0 ):
+        biggest_component = biggest_components[1]
+    else:
+        biggest_component = biggest_components[0]
+
     binarized_image[labels != biggest_component] = 0
     binarized_image[labels == biggest_component] = 1
     #Get bounding box of resulting image
@@ -47,15 +45,54 @@ def preprocess_image(img):
 
     boxed_image = binarized_image[y1:y2,x1:x2].astype(np.uint8)
 
+    return boxed_image
+
+def preprocess_multi_letter(img):
+
+    img = add_border(img,2,255)
+
+    #Binarize image
+    binarized_image = binarize_image(img)
+
+    #Filter out biggest component
+    boxed_image = extract_biggect_component(binarized_image)
+
+    #Reshape, but keep ratio
+    original_shape = np.array(np.shape(boxed_image))
+    new_shape = ((original_shape/original_shape[0])*24).astype(int)
+
+    resized_image = cv2.resize(boxed_image,dsize = (new_shape[1],new_shape[0]))
+
+    #Add border again after boxing
+    temp = add_border(resized_image,2,0)
+
+    #Blur
+    smooth_image = blur_image(temp)
+
+
+
+
+    return smooth_image.astype(np.uint8)
+
+def preprocess_single_letter(img):
+
+    img = add_border(img,2,255)
+
+    #Binarize image
+    binarized_image = binarize_image(img)
+
+    #Filter out biggest component
+    boxed_image = extract_biggect_component(binarized_image)
+
     #Reshape, but keep ratio
     original_shape = np.shape(boxed_image)
     new_shape = (original_shape/np.max(original_shape)*25).astype(int)
     resized_image = cv2.resize(boxed_image,dsize = (new_shape[1],new_shape[0]))
-    
+
     #Blur
     sigma = 0.5
     smooth_image = 255*cv2.GaussianBlur(resized_image.astype(np.float64),(3,3),sigmaX=sigma,sigmaY=sigma)
-    
+
     #Zeropad to make it desired size
     height,width  = new_shape
 
@@ -67,6 +104,11 @@ def preprocess_image(img):
 
     return padded_image.astype(np.uint8)
 
+def blur_image(img, sigma=0.5):
+    temp = img.copy()
+    smooth_image = 255*cv2.GaussianBlur(temp.astype(np.float64),(3,3),sigmaX=sigma,sigmaY=sigma)
+
+    return smooth_image
 
 def neighbours(x,y,image):
     #"Return 8-neighbours of image point P1(x,y), in a clockwise order"
@@ -82,9 +124,9 @@ def transitions(neighbours):
 
 def zhangSuen(image):
     Img_Original = image.copy()
-    Otsu_Threshold = threshold_otsu(image.copy())   
-    BW_Original = Img_Original > Otsu_Threshold 
-    
+    Otsu_Threshold = threshold_otsu(image.copy())
+    BW_Original = Img_Original > Otsu_Threshold
+
     #"the Zhang-Suen Thinning Algorithm"
     Image_Thinned = BW_Original  # deepcopy to protect the original image
     changing1 = changing2 = 1        #  the points to be removed (set as 0)
@@ -95,13 +137,13 @@ def zhangSuen(image):
         for x in range(1, rows - 1):                     # No. of  rows
             for y in range(1, columns - 1):            # No. of columns
                 P2,P3,P4,P5,P6,P7,P8,P9 = n = neighbours(x, y, Image_Thinned)
-                if (Image_Thinned[x][y] == 1     and    # Condition 0: Point P1 in the object regions 
+                if (Image_Thinned[x][y] == 1     and    # Condition 0: Point P1 in the object regions
                     2 <= sum(n) <= 6   and    # Condition 1: 2<= N(P1) <= 6
-                    transitions(n) == 1 and    # Condition 2: S(P1)=1  
-                    P2 * P4 * P6 == 0  and    # Condition 3   
+                    transitions(n) == 1 and    # Condition 2: S(P1)=1
+                    P2 * P4 * P6 == 0  and    # Condition 3
                     P4 * P6 * P8 == 0):         # Condition 4
                     changing1.append((x,y))
-        for x, y in changing1: 
+        for x, y in changing1:
             Image_Thinned[x][y] = 0
         # Step 2
         changing2 = []
@@ -113,16 +155,15 @@ def zhangSuen(image):
                     transitions(n) == 1 and      # Condition 2
                     P2 * P4 * P8 == 0 and       # Condition 3
                     P2 * P6 * P8 == 0):            # Condition 4
-                    changing2.append((x,y))    
-        for x, y in changing2: 
+                    changing2.append((x,y))
+        for x, y in changing2:
             Image_Thinned[x][y] = 0
 
 
 
 
-    #Blur                                                                                 
+    #Blur
     sigma = 0.6
     smooth_image = 255*cv2.GaussianBlur(Image_Thinned.astype(np.float64),(3,3),sigmaX=sigma,sigmaY=sigma)
 
     return smooth_image.astype(np.uint8)
- 
