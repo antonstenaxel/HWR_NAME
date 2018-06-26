@@ -99,7 +99,7 @@ def main():
     cf = Classifier(path_to_model = "Classification/Models/thinned_and_augmented_cnn_v2.h5")
 
     if(len(sys.argv) > 1):
-        mypathpath = sys.argv[1]
+        mypath = sys.argv[1]
     else:
         mypath = 'images/all_images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
