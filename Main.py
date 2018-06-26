@@ -6,6 +6,7 @@ from os.path import isfile, join
 import matplotlib.pyplot as plt
 from Segmentation import Binarization, Remove_Calibration, Segmentation
 from Classification.improved_classifier import Classifier
+from Ling.ngram_probs import gen_characters, train_char_lm, final_probs
 import json
 import numpy as np
 
@@ -97,11 +98,14 @@ def pre_processing(image_file, file):
 def main():
     #cf = Classifier(path_to_model = "Classification/Models/baseline_cnn.h5")
     cf = Classifier(path_to_model = "Classification/Models/thinned_and_augmented_cnn_v2.h5")
+    characters = gen_characters('Ling/ngrams_frequencies.csv')
+    data = ' '.join(characters)
+    lm = train_char_lm(data, order=2)
 
     if(len(sys.argv) > 1):
         mypath = sys.argv[1]
     else:
-        mypath = 'images/all_images'
+        mypath = 'images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     for file in onlyfiles:
@@ -111,6 +115,7 @@ def main():
         cropped_characters, row = pre_processing(file_name, file)
 
         predictions = []
+        history = '  '
         for c, (char, r) in enumerate(zip(cropped_characters, row)):
             char = 255*(char-1)
             pred = cf.predict(img = char, print_result=True)
@@ -120,6 +125,12 @@ def main():
             if(np.shape(pred)[0] == 1):
                 letter = label2char[class2label[np.argmax(pred)]]
             #print(c, r, letter)
+            if letter == '?':
+                try:
+                    letter = final_probs(lm, history[-2:])
+                except:
+                    pass
+            history += letter
             predictions.append((c, r, letter))
             
         out_dir = "transcripts/"
@@ -131,7 +142,7 @@ def main():
             for p in predictions:
                 c, r, letter = p
                 if r != row:
-                    print(line)
+                    #final_probs(lm, "א ")
                     out.write(''.join(line) + '\n')
                     row = r
                     line = []
