@@ -9,6 +9,8 @@ from Classification.improved_classifier import Classifier
 from Ling.ngram_probs import gen_characters, train_char_lm, final_probs
 import json
 import numpy as np
+import docx2txt
+import Min_Edit
 
 class2label = {0: 'Alef',
 1: 'Ayin',
@@ -108,14 +110,29 @@ def main():
         mypath = 'images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
+    gold_char = ''
+
     for file in onlyfiles:
-        print(file)
+        print("\n"+file)
         file_name = mypath + os.sep + file
 
-        cropped_characters, row = pre_processing(file_name, file)
+        # Considering both the images and gold outputs will be in the same folder
+        file_extension = file.split(".")[1]
+        cropped_characters = []
+        row = []
+
+        if file_extension != 'docx':
+            cropped_characters, row = pre_processing(file_name, file)
+        else:
+            gold_text = docx2txt.process(file_name)
+
+            for ch in gold_text:
+                if ch.isalnum():
+                    gold_char += ch
 
         predictions = []
         history = '  '
+        pred_char = ''
         for c, (char, r) in enumerate(zip(cropped_characters, row)):
             char = 255*(char-1)
 
@@ -134,6 +151,11 @@ def main():
             history += letter
             predictions.append((c, r, letter))
 
+            # This is to calculate Levenshtein distance
+            if letter != ' ':
+                pred_char += letter
+
+
         out_dir = "transcripts/"
         if not os.path.exists(out_dir):
             os.makedirs(out_dir)
@@ -148,6 +170,19 @@ def main():
                     row = r
                     line = []
                 line.append(letter)
+
+        # Calculate Levenshtein (Minimum Edit) distance between gold and predicted output (if you place a .docx in the input folder)
+        if file_extension != 'docx' and len(gold_char):
+
+            print("\nGold Output:")
+            print(gold_char)
+            print("\nPredicted Output:")
+            print(pred_char)
+
+            print("\nMinimum edit distance = ", Min_Edit.min_edit_distance(gold_char, pred_char))
+
+            # Initializing gold_char so that it doesn't affect the images without gold labels
+            gold_char = ''
 
 
 if __name__== "__main__":
