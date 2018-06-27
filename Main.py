@@ -96,8 +96,8 @@ def pre_processing(image_file, file):
     return cropped_characters, row
 
 def main():
-    #cf = Classifier(path_to_model = "Classification/Models/baseline_cnn.h5")
-    cf = Classifier(path_to_model = "Classification/Models/thinned_and_augmented_cnn_v2.h5")
+    
+    cf = Classifier(path_to_model = "Classification/Models/improved_augmented_cnn_v5.h5")
     characters = gen_characters('Ling/ngrams_frequencies.csv')
     data = ' '.join(characters)
     lm = train_char_lm(data, order=2)
@@ -118,6 +118,7 @@ def main():
         history = '  '
         for c, (char, r) in enumerate(zip(cropped_characters, row)):
             char = 255*(char-1)
+
             pred = cf.predict(img = char, print_result=True)
 
             #letter = 'Multi-letter/A'

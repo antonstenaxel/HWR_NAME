@@ -37,6 +37,67 @@ class Classifier:
     27: 'Multi-letter',
     28: 'Noise'}
 
+    class2label = {0: 'Alef',
+    1: 'Ayin',
+    2: 'Bet',
+    3: 'Dalet',
+    4: 'Gimel',
+    5: 'He',
+    6: 'Het',
+    7: 'Kaf',
+    8: 'Kaf-final',
+    9: 'Lamed',
+    10: 'Mem',
+    11: 'Mem-medial',
+    12: 'Nun-final',
+    13: 'Nun-medial',
+    14: 'Pe',
+    15: 'Pe-final',
+    16: 'Qof',
+    17: 'Resh',
+    18: 'Samekh',
+    19: 'Shin',
+    20: 'Taw',
+    21: 'Tet',
+    22: 'Tsadi-final',
+    23: 'Tsadi-medial',
+    24: 'Waw',
+    25: 'Yod',
+    26: 'Zayin',
+    27: 'Multi-letter',
+    28: 'Noise'}
+
+    label2char = {'Alef':'א',
+    'Ayin':'ע',
+    'Bet':'ב',
+    'Dalet':'ד',
+    'Gimel':'ג',
+    'He':'ה',
+    'Het':'ח',
+    'Kaf':'כ',
+    'Kaf-final':'ך',
+    'Lamed':'ל',
+    'Mem':'ם',
+    'Mem-medial':'מ',
+    'Nun-final':'ן',
+    'Nun-medial':'נ',
+    'Pe':'פ',
+    'Pe-final':'ף',
+    'Qof':'ק',
+    'Resh':'ר',
+    'Samekh':'ס',
+    'Shin':'ש',
+    'Taw':'ת',
+    'Tet':'ט',
+    'Tsadi-final':'צ',
+    'Tsadi-medial':'צ',
+    'Waw':'ו',
+    'Yod':'י',
+    'Zayin':'ז',
+    'Multi-letter': '!',
+    'Noise': ''
+    }
+
 
     def __init__(self,path_to_model):
         self.model = load_model(path_to_model)
@@ -49,17 +110,17 @@ class Classifier:
         else:
             preprocessed_image = utility_functions.preprocess_multi_letter(img)
 
-        thinned_image = utility_functions.zhangSuen(preprocessed_image)
+        #thinned_image = utility_functions.zhangSuen(preprocessed_image)
 
         #Data obtained from training model, only for thinned and augmented images
-        feature_mean = 0.05701436
-        feature_std = 0.17784794
+        feature_mean = 0.18588859
+        feature_std = 0.35586226
 
-        final_image = (thinned_image-feature_mean)/feature_std
+        final_image = (preprocessed_image-feature_mean)/feature_std
 
         return final_image
 
-    def multi_letter_predict(self,img,print_result = True, stride = 1):
+    def multi_letter_predict(self,img,print_result = False, stride = 1):
 
         img_height, img_width = np.shape(img)
 
@@ -102,7 +163,7 @@ class Classifier:
 
         return p
 
-    def single_letter_predict(self,img,print_result = True):
+    def single_letter_predict(self,img,print_result = False):
 
         p = self.model.predict_proba(img)
 
@@ -122,8 +183,12 @@ class Classifier:
 
         preprocessed_image = self.preprocess_image(img.copy(),multi_letter = False)
 
-        p = self.single_letter_predict(preprocessed_image.reshape([1,28,28,1]), print_result = False)
 
+        p = self.single_letter_predict(preprocessed_image.reshape([1,28,28,1]), print_result = False)
+        #pred = np.argmax(p)
+        #plt.imshow(preprocessed_image,cmap="gray")
+        #plt.title(self.label2char[self.class2label[pred]])
+        #plt.show()
         if(p[0,27] > 0.8):
             preprocessed_multi_letter = self.preprocess_image(img.copy(), multi_letter = True)
             s = np.shape(preprocessed_multi_letter)
