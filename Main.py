@@ -100,7 +100,7 @@ def main():
             char = 255*(char-1)
             pred = cf.predict(img = char, print_result=True)
 
-            letter = 'Multi-letter/A'
+            letter = 'Multi-letter'
             if(np.shape(pred)[0] == 1):
                 letter = dic[np.argmax(pred)]
 
