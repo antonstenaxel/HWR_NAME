@@ -113,8 +113,9 @@ class Classifier:
         #thinned_image = utility_functions.zhangSuen(preprocessed_image)
 
         #Data obtained from training model, only for thinned and augmented images
-        feature_mean = 0.18588859
-        feature_std = 0.35586226
+        feature_mean =  0.18548644
+
+        feature_std = 0.35560286
 
         final_image = (preprocessed_image-feature_mean)/feature_std
 
