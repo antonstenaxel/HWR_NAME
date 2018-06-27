@@ -3,10 +3,12 @@ import csv
 import pprint
 import operator
 
-def print_probs(lm, history):
-    probs = sorted(lm[history],key=lambda x:(-x[1],x[0]))
-    pp = pprint.PrettyPrinter()
-    pp.pprint(probs)
+def final_probs(lm, history):
+    res = lm[history]
+    return max(res, key=operator.itemgetter(1))[0]
+    #probs = sorted(lm[history],key=lambda x:(-x[1],x[0]))
+    #pp = pprint.PrettyPrinter()
+    #pp.pprint(probs)
     
 
 def gen_characters(corpus):
@@ -18,11 +20,7 @@ def gen_characters(corpus):
 
 
 def train_char_lm(data, order=2, add_k=1):
-    ''' Trains a language model.
-    This code was borrowed from 
-    http://nbviewer.jupyter.org/gist/yoavg/d76121dfde2618422139
-    Inputs:
-    f  name: Path to a text corpus.
+    ''' 
     order: The length of the n-grams.
     add_k: k value for add-k smoothing. NOT YET IMPLMENTED
     Returns:
@@ -50,5 +48,5 @@ if __name__ == '__main__':
     characters = gen_characters('ngrams_frequencies.csv')
     data = ' '.join(characters)
     lm = train_char_lm(data, order=2)
-    print_probs(lm, "אר")
+    print(final_probs(lm, "א "))
   
