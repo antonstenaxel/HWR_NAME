@@ -84,7 +84,7 @@ def segmentation(image):
     # image_label_overlay = label2rgb(labeled, image=im)
 
     fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
-    ax.imshow(image, cmap=plt.cm.gray)
+    # ax.imshow(image, cmap=plt.cm.gray)
     # plt.show()
 
     #########################################
@@ -137,7 +137,7 @@ def segmentation(image):
         rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
                                   fill=False, edgecolor='red', linewidth=2)
 
-        ax.add_patch(rect)
+        # ax.add_patch(rect)
 
     # plt.show()
 

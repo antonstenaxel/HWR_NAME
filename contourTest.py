@@ -48,9 +48,10 @@ def biggest_contour():
         SCLength = len(smallestContour)
         print("smallest Contour ", smallestContour)
 
-        mask = np.ones(originalImage.shape[:2], dtype="uint8") * 255
+        mask = np.ones(originalImage.shape[:2], dtype="uint8") * 128
         # mask = np.zeros_like(originalImage)
         im_contour = cv2.drawContours(blur, biggestContour, -1, (0, 255, 0), 3)
+
         out = np.zeros_like(im_contour) # Extract out the object and place into output image
         out[im_contour == 255] = originalImage[im_contour == 255]
 
@@ -69,7 +70,6 @@ def biggest_contour():
                 #plt.title(title)
                 plt.axis('off')
                 plt.show()
-
 
 def main():
     biggest_contour()
