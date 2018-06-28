@@ -92,10 +92,10 @@ def pre_processing(image_file, file):
     #Binarization.save_image(bin_image, file.split(".")[0])
 
     # Returns a list of segmented characters and number of rows
-    cropped_characters, row = Segmentation.segmentation(bin_image)
-    #Segmentation.save_segmented_characters(cropped_characters, row, file)
+    cropped_characters, row, no_ofChar = Segmentation.segmentation(bin_image)
+    # Segmentation.save_segmented_characters(cropped_characters, row, file)
 
-    return cropped_characters, row
+    return cropped_characters, row, no_ofChar
 
 def main():
 
@@ -122,7 +122,8 @@ def main():
         row = []
 
         if file_extension != 'docx':
-            cropped_characters, row = pre_processing(file_name, file)
+            # segmented images, row number and how many characters in case of multiple character
+            cropped_characters, row, no_ofChar = pre_processing(file_name, file)
         else:
             gold_text = docx2txt.process(file_name)
 
