@@ -6,6 +6,8 @@ Project was done by **N**. Ahmadi, **A**. Karlsson, **M**d. Ataur Rahman, **E**.
 
 ### Usage
 
+The project should be run on Python 3.
+
 * Clone the repo
 * Install the requirements
 * `python Main.py /path/to/images`

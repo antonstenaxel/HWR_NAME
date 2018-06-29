@@ -173,6 +173,8 @@ def main():
             if letter != ' ':
                 pred_char += letter
 
+        if file_extension == 'docx':
+            continue
 
         out_dir = "transcripts/"
         if not os.path.exists(out_dir):
