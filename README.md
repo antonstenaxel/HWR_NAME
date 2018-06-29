@@ -1,7 +1,7 @@
 # Team "HWR_NAME"
 ## Handwriting recognition for Dead Sea Scrolls
 
-Project was done by *N*. Ahmadi, *A*. Karlsson, *Md*. Ataur Rahman, *E*. Kuzmenko
+Project was done by **N**. Ahmadi, **A**. Karlsson, **Md**. Ataur Rahman, **E**. Kuzmenko
 
 
 ### Usage
