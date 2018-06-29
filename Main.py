@@ -120,6 +120,7 @@ def main():
         file_extension = file.split(".")[1]
         cropped_characters = []
         row = []
+        num_char = []
 
         if file_extension != 'docx':
             # segmented images, row number and how many characters in case of multiple character
