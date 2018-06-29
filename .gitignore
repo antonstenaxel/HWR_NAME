@@ -5,3 +5,6 @@
 */segmented_articles/*
 binarized
 segmented_articles
+transcripts
+*/transcripts/*
+__pycache__

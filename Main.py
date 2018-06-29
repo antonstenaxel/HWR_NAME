@@ -123,7 +123,7 @@ def main():
 
         if file_extension != 'docx':
             # segmented images, row number and how many characters in case of multiple character
-            cropped_characters, row, no_ofChar = pre_processing(file_name, file)
+            cropped_characters, row, num_char = pre_processing(file_name, file)
         else:
             gold_text = docx2txt.process(file_name)
 
@@ -134,7 +134,7 @@ def main():
         predictions = []
         history = '  '
         pred_char = ''
-        for c, (char, r) in enumerate(zip(cropped_characters, row)):
+        for c, (char, r, n) in enumerate(zip(cropped_characters, row, num_char)):
             char = 255*(char-1)
 
             pred = cf.predict(img = char, print_result=False)
@@ -142,15 +142,32 @@ def main():
             #letter = 'Multi-letter/A'
             letter ='?'
             if(np.shape(pred)[0] == 1):
-                letter = label2char[class2label[np.argmax(pred)]]
-            #print(c, r, letter)
-            if letter == '?':
-                try:
+                if np.amax(pred) < 0.3:
                     letter = final_probs(lm, history[-2:])
-                except:
-                    pass
-            history += letter
-            predictions.append((c, r, letter))
+                    history += letter
+                    predictions.append((c, r, letter))
+                else:
+                    letter = label2char[class2label[np.argmax(pred)]]
+                    history += letter
+                    predictions.append((c, r, letter))
+            if letter == '?':
+                for x in range(n):
+                    l = label2char[class2label[np.argmax(np.sum(pred, axis=1))]]
+                    if l == '!':
+                        try:
+                            letter = final_probs(lm, history[-2:])
+                            history += letter
+                            predictions.append((c, r, letter))
+                        except:
+                            pass
+                    else:
+                        L = np.argsort(np.sum(pred, axis=1))[-2:]
+                        letter1 = label2char[class2label[L[1]]]
+                        letter2 = label2char[class2label[L[0]]]
+                        history = history + letter1 + letter2
+                        predictions.append((c, r, letter1))
+                        predictions.append((c, r, letter1))
+
 
             # This is to calculate Levenshtein distance
             if letter != ' ':
