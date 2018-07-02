@@ -84,7 +84,7 @@ def segmentation(image):
     # image_label_overlay = label2rgb(labeled, image=im)
 
     fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
-    ax.imshow(image, cmap=plt.cm.gray)
+    # ax.imshow(image, cmap=plt.cm.gray)
     # plt.show()
 
     #########################################
@@ -100,7 +100,6 @@ def segmentation(image):
     # Sorting But failed...
     region_bbox = []
 
-
     for region_index, region in enumerate(regionprops(labeled)):
         if region.area < 200:
             continue
@@ -113,35 +112,42 @@ def segmentation(image):
         # Number of rows can start from any number not necessarily 0
         row_no = int(x/100)
 
+        #Assuminf average character is 30 pixel in width - for multi letters
+        # if its >= 1.5*31 = 46.5 pixel then we consider it as 2 character
 
-        region_bbox.append([row_no, x, y, minr, minc, maxr, maxc])
+        no_of_ch = math.floor(((maxc - minc)/31)+0.5)
+
+        region_bbox.append([row_no, x, y, minr, minc, maxr, maxc, no_of_ch])
         # region_bbox.append(region.bbox)
+
 
     region_bbox = sorted(region_bbox, key = lambda x: (x[0], -x[2]))
 
     row = []
+    no_ofChar = []
     first_row = region_bbox[0][0]
 
     for region in region_bbox:
         #print(region)
 
-        row_no, x, y, minr, minc, maxr, maxc = region
+        row_no, x, y, minr, minc, maxr, maxc, no_of_ch = region
         row.append(row_no - first_row)
+        no_ofChar.append(no_of_ch)
 
         # use those bounding box coordinates to crop the image
         # cropped = nparray_to_image(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
         cropped_images.append(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
 
-        # print ("region", region_index, "bounding box:", minr, minc, maxr, maxc)
+        # print ("Row", row_no - first_row, "bounding box:", minr, minc, maxr, maxc, "No of Char: ", no_of_ch)
 
         rect = mpatches.Rectangle((minc, minr), maxc - minc, maxr - minr,
                                   fill=False, edgecolor='red', linewidth=2)
 
-        ax.add_patch(rect)
+        # ax.add_patch(rect)
 
     # plt.show()
 
-    return cropped_images, row
+    return cropped_images, row, no_ofChar
 
 
 def save_segmented_characters(cropped_images, row, file):

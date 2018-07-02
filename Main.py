@@ -9,6 +9,8 @@ from Classification.improved_classifier import Classifier
 from Ling.ngram_probs import gen_characters, train_char_lm, final_probs
 import json
 import numpy as np
+import docx2txt
+import Min_Edit
 
 class2label = {0: 'Alef',
 1: 'Ayin',
@@ -90,10 +92,10 @@ def pre_processing(image_file, file):
     #Binarization.save_image(bin_image, file.split(".")[0])
 
     # Returns a list of segmented characters and number of rows
-    cropped_characters, row = Segmentation.segmentation(bin_image)
-    #Segmentation.save_segmented_characters(cropped_characters, row, file)
+    cropped_characters, row, no_ofChar = Segmentation.segmentation(bin_image)
+    # Segmentation.save_segmented_characters(cropped_characters, row, file)
 
-    return cropped_characters, row
+    return cropped_characters, row, no_ofChar
 
 def main():
 
@@ -108,15 +110,32 @@ def main():
         mypath = 'images'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
+    gold_char = ''
+
     for file in onlyfiles:
-        print(file)
+        print("\n"+file)
         file_name = mypath + os.sep + file
 
-        cropped_characters, row = pre_processing(file_name, file)
+        # Considering both the images and gold outputs will be in the same folder
+        file_extension = file.split(".")[1]
+        cropped_characters = []
+        row = []
+        num_char = []
+
+        if file_extension != 'docx':
+            # segmented images, row number and how many characters in case of multiple character
+            cropped_characters, row, num_char = pre_processing(file_name, file)
+        else:
+            gold_text = docx2txt.process(file_name)
+
+            for ch in gold_text:
+                if ch.isalnum():
+                    gold_char += ch
 
         predictions = []
         history = '  '
-        for c, (char, r) in enumerate(zip(cropped_characters, row)):
+        pred_char = ''
+        for c, (char, r, n) in enumerate(zip(cropped_characters, row, num_char)):
             char = 255*(char-1)
 
             pred = cf.predict(img = char, print_result=False)
@@ -124,15 +143,39 @@ def main():
             #letter = 'Multi-letter/A'
             letter ='?'
             if(np.shape(pred)[0] == 1):
-                letter = label2char[class2label[np.argmax(pred)]]
-            #print(c, r, letter)
-            if letter == '?':
-                try:
+                if np.amax(pred) < 0.3:
                     letter = final_probs(lm, history[-2:])
-                except:
-                    pass
-            history += letter
-            predictions.append((c, r, letter))
+                    history += letter
+                    predictions.append((c, r, letter))
+                else:
+                    letter = label2char[class2label[np.argmax(pred)]]
+                    history += letter
+                    predictions.append((c, r, letter))
+            if letter == '?':
+                for x in range(n):
+                    l = label2char[class2label[np.argmax(np.sum(pred, axis=1))]]
+                    if l == '!':
+                        try:
+                            letter = final_probs(lm, history[-2:])
+                            history += letter
+                            predictions.append((c, r, letter))
+                        except:
+                            pass
+                    else:
+                        L = np.argsort(np.sum(pred, axis=1))[-2:]
+                        letter1 = label2char[class2label[L[1]]]
+                        letter2 = label2char[class2label[L[0]]]
+                        history = history + letter1 + letter2
+                        predictions.append((c, r, letter1))
+                        predictions.append((c, r, letter1))
+
+
+            # This is to calculate Levenshtein distance
+            if letter != ' ':
+                pred_char += letter
+
+        if file_extension == 'docx':
+            continue
 
         out_dir = "transcripts/"
         if not os.path.exists(out_dir):
@@ -148,6 +191,19 @@ def main():
                     row = r
                     line = []
                 line.append(letter)
+
+        # Calculate Levenshtein (Minimum Edit) distance between gold and predicted output (if you place a .docx in the input folder)
+        if file_extension != 'docx' and len(gold_char):
+
+            print("\nGold Output:")
+            print(gold_char)
+            print("\nPredicted Output:")
+            print(pred_char)
+
+            print("\nMinimum edit distance = ", Min_Edit.min_edit_distance(gold_char, pred_char))
+
+            # Initializing gold_char so that it doesn't affect the images without gold labels
+            gold_char = ''
 
 
 if __name__== "__main__":

@@ -1,54 +1,44 @@
+import cv2
 import numpy as np
-import os, cv2, sys
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+import os
 
-def binarize(_img,treshold = 30):
-    _img[_img<=treshold] = 0
-    _img[_img>treshold] = 1
-    return _img.astype(np.uint8)
 
 def cutout_img(image_file):
 
-    filename = os.path.join(image_file)
-    _img = cv2.imread(filename,0)
+    file_name = os.path.join(image_file)
 
-    img_copy = np.copy(_img)
-    img_area = np.shape(_img)[0]*np.shape(_img)[1]
-    binarized_image = binarize(_img)
-    connectivity = 8
-    output = cv2.connectedComponentsWithStats(binarized_image, connectivity, cv2.CV_32S)
-    centroids = output[3]
-    num_labels = output[0]
-    labels = output[1]
-    stats = output[2]
-    lista = np.argsort(stats[:,cv2.CC_STAT_AREA])
+    originalImage = cv2.imread(file_name,0)
 
-    # Go through components sorted by area and check if bbox contains img center
-    for i in lista[::-1]:
-        left,top,width,height = stats[i,0:4]
+    img_copy = np.copy(originalImage)
 
-        x1 = left
-        x2 = left + width
-        y1 = top
-        y2 = top + height
+    img_copy = img_copy.astype(np.uint8)
 
-        x,y = centroids[i]
-        # print(stats[i,cv2.CC_STAT_AREA],img_area)
-        if( x > x1 and x < x2 and y > y1 and y < y2 and (x1 != 0 or y1 != 0)):
-            right_component = i
-            break
+    #Blur the image to reduce the noise
+    blur = cv2.GaussianBlur(img_copy, (5, 5), 0)
 
-    # img_copy[labels != right_component] = 0
-    # Bounding box of biggest component
-    left,top,width,height = stats[right_component,0:4]
+    # imgray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+    ret, thresh = cv2.threshold(blur, 30, 255, 0)
+    im2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    largest_area = 0
+    bounding_rect = cv2.boundingRect(contours[0])
 
-    new_img = img_copy[top:top+height,left:left+width]
+    for i in contours:
+        area = cv2.contourArea(i)
+        if (area>largest_area):
+            largest_area=area
+            largest_contour_index=i
+            bounding_rect=cv2.boundingRect(i)
 
-    plt.imshow(new_img, cmap=plt.cm.gray)
-    #plt.show()
+    # Crop image
+    r = bounding_rect
+    imCrop = originalImage[int(r[1]):int(r[1]+r[3]), int(r[0]):int(r[0]+r[2])]
 
-    return new_img
+    # plt.imshow(imCrop, cmap=plt.cm.gray)
+    # plt.show()
+
+    return imCrop
 
 
 def save_image(image, file_name):
